@@ -1,5 +1,5 @@
 <?php
-// created: 2019-05-09 11:51:45
+// created: 2019-05-13 13:24:59
 $dashletsFiles = array (
   'MyDocumentsDashlet' => 
   array (
@@ -119,6 +119,13 @@ $dashletsFiles = array (
     'class' => 'AOS_QuotesDashlet',
     'meta' => 'modules/AOS_Quotes/Dashlets/AOS_QuotesDashlet/AOS_QuotesDashlet.meta.php',
     'module' => 'AOS_Quotes',
+  ),
+  'new_PushToDiallerDashlet' => 
+  array (
+    'file' => 'modules/new_PushToDialler/Dashlets/new_PushToDiallerDashlet/new_PushToDiallerDashlet.php',
+    'class' => 'new_PushToDiallerDashlet',
+    'meta' => 'modules/new_PushToDialler/Dashlets/new_PushToDiallerDashlet/new_PushToDiallerDashlet.meta.php',
+    'module' => 'new_PushToDialler',
   ),
   'SurveyQuestionOptionsDashlet' => 
   array (

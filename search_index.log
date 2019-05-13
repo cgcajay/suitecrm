@@ -28,3 +28,8 @@
 [2019-04-26 08:28:01] ElasticSearchIndexer.DEBUG: Reading lock file cache/ElasticSearchIndexer.lock [] []
 [2019-04-26 08:28:01] ElasticSearchIndexer.DEBUG: Lock file not found [] []
 [2019-04-26 08:28:01] ElasticSearchIndexer.DEBUG: A full indexing will be performed [] []
+[2019-05-13 13:20:15] ElasticSearchIndexer.INFO: Starting indexing procedures [] []
+[2019-05-13 13:20:15] ElasticSearchIndexer.DEBUG: Indexing is performed using JsonSerializerDocumentifier [] []
+[2019-05-13 13:20:15] ElasticSearchIndexer.DEBUG: Reading lock file cache/ElasticSearchIndexer.lock [] []
+[2019-05-13 13:20:15] ElasticSearchIndexer.DEBUG: Lock file not found [] []
+[2019-05-13 13:20:15] ElasticSearchIndexer.DEBUG: A full indexing will be performed [] []

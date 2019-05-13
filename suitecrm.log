@@ -25673,3 +25673,308 @@ Stack trace:
 #20 /opt/lampp/htdocs/suitecrm/include/MVC/SugarApplication.php(113): SugarController->execute()
 #21 /opt/lampp/htdocs/suitecrm/index.php(52): SugarApplication->execute()
 #22 {main}
+Mon May 13 13:20:15 2019 [3571][1][FATAL] Exception handling in /opt/lampp/htdocs/suitecrm/include/MVC/Controller/SugarController.php:400
+Mon May 13 13:20:15 2019 [3571][1][FATAL] Exception in Controller: No alive nodes found in your cluster
+Mon May 13 13:20:15 2019 [3571][1][FATAL] backtrace:
+#0 /opt/lampp/htdocs/suitecrm/vendor/elasticsearch/elasticsearch/src/Elasticsearch/Transport.php(72): Elasticsearch\ConnectionPool\StaticNoPingConnectionPool->nextConnection()
+#1 /opt/lampp/htdocs/suitecrm/vendor/elasticsearch/elasticsearch/src/Elasticsearch/Transport.php(90): Elasticsearch\Transport->getConnection()
+#2 /opt/lampp/htdocs/suitecrm/vendor/elasticsearch/elasticsearch/src/Elasticsearch/Connections/Connection.php(236): Elasticsearch\Transport->performRequest('DELETE', '/main', Array, NULL, Array)
+#3 /opt/lampp/htdocs/suitecrm/vendor/react/promise/src/FulfilledPromise.php(25): Elasticsearch\Connections\Connection->Elasticsearch\Connections\{closure}(Array)
+#4 /opt/lampp/htdocs/suitecrm/vendor/guzzlehttp/ringphp/src/Future/CompletedFutureValue.php(55): React\Promise\FulfilledPromise->then(Object(Closure), NULL, NULL)
+#5 /opt/lampp/htdocs/suitecrm/vendor/guzzlehttp/ringphp/src/Core.php(341): GuzzleHttp\Ring\Future\CompletedFutureValue->then(Object(Closure), NULL, NULL)
+#6 /opt/lampp/htdocs/suitecrm/vendor/elasticsearch/elasticsearch/src/Elasticsearch/Connections/Connection.php(294): GuzzleHttp\Ring\Core::proxy(Object(GuzzleHttp\Ring\Future\CompletedFutureArray), Object(Closure))
+#7 /opt/lampp/htdocs/suitecrm/vendor/elasticsearch/elasticsearch/src/Elasticsearch/Connections/Connection.php(171): Elasticsearch\Connections\Connection->Elasticsearch\Connections\{closure}(Array, Object(Elasticsearch\Connections\Connection), Object(Elasticsearch\Transport), Array)
+#8 /opt/lampp/htdocs/suitecrm/vendor/elasticsearch/elasticsearch/src/Elasticsearch/Transport.php(101): Elasticsearch\Connections\Connection->performRequest('DELETE', '/main', Array, NULL, Array, Object(Elasticsearch\Transport))
+#9 /opt/lampp/htdocs/suitecrm/vendor/elasticsearch/elasticsearch/src/Elasticsearch/Namespaces/AbstractNamespace.php(72): Elasticsearch\Transport->performRequest('DELETE', '/main', Array, NULL, Array)
+#10 /opt/lampp/htdocs/suitecrm/vendor/elasticsearch/elasticsearch/src/Elasticsearch/Namespaces/IndicesNamespace.php(139): Elasticsearch\Namespaces\AbstractNamespace->performRequest(Object(Elasticsearch\Endpoints\Indices\Delete))
+#11 /opt/lampp/htdocs/suitecrm/lib/Search/ElasticSearch/ElasticSearchIndexer.php(169): Elasticsearch\Namespaces\IndicesNamespace->delete(Array)
+#12 /opt/lampp/htdocs/suitecrm/lib/Search/ElasticSearch/ElasticSearchIndexer.php(124): SuiteCRM\Search\ElasticSearch\ElasticSearchIndexer->removeIndex()
+#13 /opt/lampp/htdocs/suitecrm/lib/Search/ElasticSearch/ElasticSearchIndexer.php(581): SuiteCRM\Search\ElasticSearch\ElasticSearchIndexer->index()
+#14 /opt/lampp/htdocs/suitecrm/modules/Administration/repairDatabase.php(179): SuiteCRM\Search\ElasticSearch\ElasticSearchIndexer::repairElasticsearchIndex()
+#15 /opt/lampp/htdocs/suitecrm/modules/Administration/QuickRepairAndRebuild.php(138): include_once('/opt/lampp/htdo...')
+#16 /opt/lampp/htdocs/suitecrm/modules/Administration/QuickRepairAndRebuild.php(120): RepairAndClear->repairDatabase()
+#17 /opt/lampp/htdocs/suitecrm/modules/Administration/views/view.repair.php(61): RepairAndClear->repairAndClearAll(Array, Array, false, true)
+#18 /opt/lampp/htdocs/suitecrm/include/MVC/View/SugarView.php(226): ViewRepair->display()
+#19 /opt/lampp/htdocs/suitecrm/include/MVC/Controller/SugarController.php(435): SugarView->process()
+#20 /opt/lampp/htdocs/suitecrm/include/MVC/Controller/SugarController.php(375): SugarController->processView()
+#21 /opt/lampp/htdocs/suitecrm/include/MVC/SugarApplication.php(113): SugarController->execute()
+#22 /opt/lampp/htdocs/suitecrm/index.php(52): SugarApplication->execute()
+#23 {main}
+Mon May 13 13:23:43 2019 [4609][1][FATAL] [ERROR] Failed to index bean to index
+Mon May 13 13:23:43 2019 [4609][1][FATAL] [ERROR] SuiteCRM\Search\Exceptions\SearchException: Elasticsearch trying to re-indexing a bean but indexer is disabled in configuration. in /opt/lampp/htdocs/suitecrm/lib/Search/ElasticSearch/ElasticSearchHooks.php:121
+Stack trace:
+#0 /opt/lampp/htdocs/suitecrm/lib/Search/ElasticSearch/ElasticSearchHooks.php(103): SuiteCRM\Search\ElasticSearch\ElasticSearchHooks->reIndex(Object(ACLAction))
+#1 /opt/lampp/htdocs/suitecrm/lib/Search/ElasticSearch/ElasticSearchHooks.php(76): SuiteCRM\Search\ElasticSearch\ElasticSearchHooks->reIndexSafe(Object(ACLAction))
+#2 /opt/lampp/htdocs/suitecrm/include/utils/LogicHook.php(272): SuiteCRM\Search\ElasticSearch\ElasticSearchHooks->beanSaved(Object(ACLAction), 'after_save', '')
+#3 /opt/lampp/htdocs/suitecrm/include/utils/LogicHook.php(213): LogicHook->process_hooks(Array, 'after_save', '')
+#4 /opt/lampp/htdocs/suitecrm/data/SugarBean.php(3129): LogicHook->call_custom_logic('ACLActions', 'after_save', '')
+#5 /opt/lampp/htdocs/suitecrm/data/SugarBean.php(2442): SugarBean->call_custom_logic('after_save', '')
+#6 /opt/lampp/htdocs/suitecrm/modules/ACLActions/ACLAction.php(103): SugarBean->save()
+#7 /opt/lampp/htdocs/suitecrm/data/SugarBean.php(2183): ACLAction::addActions('new_PushToDiall...', 'module')
+#8 /opt/lampp/htdocs/suitecrm/ModuleInstall/ModuleInstaller.php(1964): SugarBean->create_tables()
+#9 /opt/lampp/htdocs/suitecrm/ModuleInstall/ModuleInstaller.php(184): ModuleInstaller->install_beans(Array)
+#10 /opt/lampp/htdocs/suitecrm/ModuleInstall/PackageManager/PackageManager.php(600): ModuleInstaller->install('/opt/lampp/htdo...')
+#11 /opt/lampp/htdocs/suitecrm/modules/ModuleBuilder/controller.php(236): PackageManager->performInstall('upload/upgrades...', true)
+#12 /opt/lampp/htdocs/suitecrm/include/MVC/Controller/SugarController.php(525): ModuleBuilderController->action_DeployPackage()
+#13 /opt/lampp/htdocs/suitecrm/include/MVC/Controller/SugarController.php(494): SugarController->do_action()
+#14 /opt/lampp/htdocs/suitecrm/include/MVC/Controller/SugarController.php(468): SugarController->handle_action()
+#15 /opt/lampp/htdocs/suitecrm/modules/ModuleBuilder/controller.php(101): SugarController->process()
+#16 /opt/lampp/htdocs/suitecrm/include/MVC/Controller/SugarController.php(373): ModuleBuilderController->process()
+#17 /opt/lampp/htdocs/suitecrm/include/MVC/SugarApplication.php(113): SugarController->execute()
+#18 /opt/lampp/htdocs/suitecrm/index.php(52): SugarApplication->execute()
+#19 {main}
+Mon May 13 13:23:43 2019 [4609][1][FATAL] [ERROR] Failed to index bean to index
+Mon May 13 13:23:43 2019 [4609][1][FATAL] [ERROR] SuiteCRM\Search\Exceptions\SearchException: Elasticsearch trying to re-indexing a bean but indexer is disabled in configuration. in /opt/lampp/htdocs/suitecrm/lib/Search/ElasticSearch/ElasticSearchHooks.php:121
+Stack trace:
+#0 /opt/lampp/htdocs/suitecrm/lib/Search/ElasticSearch/ElasticSearchHooks.php(103): SuiteCRM\Search\ElasticSearch\ElasticSearchHooks->reIndex(Object(ACLAction))
+#1 /opt/lampp/htdocs/suitecrm/lib/Search/ElasticSearch/ElasticSearchHooks.php(76): SuiteCRM\Search\ElasticSearch\ElasticSearchHooks->reIndexSafe(Object(ACLAction))
+#2 /opt/lampp/htdocs/suitecrm/include/utils/LogicHook.php(272): SuiteCRM\Search\ElasticSearch\ElasticSearchHooks->beanSaved(Object(ACLAction), 'after_save', '')
+#3 /opt/lampp/htdocs/suitecrm/include/utils/LogicHook.php(213): LogicHook->process_hooks(Array, 'after_save', '')
+#4 /opt/lampp/htdocs/suitecrm/data/SugarBean.php(3129): LogicHook->call_custom_logic('ACLActions', 'after_save', '')
+#5 /opt/lampp/htdocs/suitecrm/data/SugarBean.php(2442): SugarBean->call_custom_logic('after_save', '')
+#6 /opt/lampp/htdocs/suitecrm/modules/ACLActions/ACLAction.php(103): SugarBean->save()
+#7 /opt/lampp/htdocs/suitecrm/data/SugarBean.php(2183): ACLAction::addActions('new_PushToDiall...', 'module')
+#8 /opt/lampp/htdocs/suitecrm/ModuleInstall/ModuleInstaller.php(1964): SugarBean->create_tables()
+#9 /opt/lampp/htdocs/suitecrm/ModuleInstall/ModuleInstaller.php(184): ModuleInstaller->install_beans(Array)
+#10 /opt/lampp/htdocs/suitecrm/ModuleInstall/PackageManager/PackageManager.php(600): ModuleInstaller->install('/opt/lampp/htdo...')
+#11 /opt/lampp/htdocs/suitecrm/modules/ModuleBuilder/controller.php(236): PackageManager->performInstall('upload/upgrades...', true)
+#12 /opt/lampp/htdocs/suitecrm/include/MVC/Controller/SugarController.php(525): ModuleBuilderController->action_DeployPackage()
+#13 /opt/lampp/htdocs/suitecrm/include/MVC/Controller/SugarController.php(494): SugarController->do_action()
+#14 /opt/lampp/htdocs/suitecrm/include/MVC/Controller/SugarController.php(468): SugarController->handle_action()
+#15 /opt/lampp/htdocs/suitecrm/modules/ModuleBuilder/controller.php(101): SugarController->process()
+#16 /opt/lampp/htdocs/suitecrm/include/MVC/Controller/SugarController.php(373): ModuleBuilderController->process()
+#17 /opt/lampp/htdocs/suitecrm/include/MVC/SugarApplication.php(113): SugarController->execute()
+#18 /opt/lampp/htdocs/suitecrm/index.php(52): SugarApplication->execute()
+#19 {main}
+Mon May 13 13:23:43 2019 [4609][1][FATAL] [ERROR] Failed to index bean to index
+Mon May 13 13:23:43 2019 [4609][1][FATAL] [ERROR] SuiteCRM\Search\Exceptions\SearchException: Elasticsearch trying to re-indexing a bean but indexer is disabled in configuration. in /opt/lampp/htdocs/suitecrm/lib/Search/ElasticSearch/ElasticSearchHooks.php:121
+Stack trace:
+#0 /opt/lampp/htdocs/suitecrm/lib/Search/ElasticSearch/ElasticSearchHooks.php(103): SuiteCRM\Search\ElasticSearch\ElasticSearchHooks->reIndex(Object(ACLAction))
+#1 /opt/lampp/htdocs/suitecrm/lib/Search/ElasticSearch/ElasticSearchHooks.php(76): SuiteCRM\Search\ElasticSearch\ElasticSearchHooks->reIndexSafe(Object(ACLAction))
+#2 /opt/lampp/htdocs/suitecrm/include/utils/LogicHook.php(272): SuiteCRM\Search\ElasticSearch\ElasticSearchHooks->beanSaved(Object(ACLAction), 'after_save', '')
+#3 /opt/lampp/htdocs/suitecrm/include/utils/LogicHook.php(213): LogicHook->process_hooks(Array, 'after_save', '')
+#4 /opt/lampp/htdocs/suitecrm/data/SugarBean.php(3129): LogicHook->call_custom_logic('ACLActions', 'after_save', '')
+#5 /opt/lampp/htdocs/suitecrm/data/SugarBean.php(2442): SugarBean->call_custom_logic('after_save', '')
+#6 /opt/lampp/htdocs/suitecrm/modules/ACLActions/ACLAction.php(103): SugarBean->save()
+#7 /opt/lampp/htdocs/suitecrm/data/SugarBean.php(2183): ACLAction::addActions('new_PushToDiall...', 'module')
+#8 /opt/lampp/htdocs/suitecrm/ModuleInstall/ModuleInstaller.php(1964): SugarBean->create_tables()
+#9 /opt/lampp/htdocs/suitecrm/ModuleInstall/ModuleInstaller.php(184): ModuleInstaller->install_beans(Array)
+#10 /opt/lampp/htdocs/suitecrm/ModuleInstall/PackageManager/PackageManager.php(600): ModuleInstaller->install('/opt/lampp/htdo...')
+#11 /opt/lampp/htdocs/suitecrm/modules/ModuleBuilder/controller.php(236): PackageManager->performInstall('upload/upgrades...', true)
+#12 /opt/lampp/htdocs/suitecrm/include/MVC/Controller/SugarController.php(525): ModuleBuilderController->action_DeployPackage()
+#13 /opt/lampp/htdocs/suitecrm/include/MVC/Controller/SugarController.php(494): SugarController->do_action()
+#14 /opt/lampp/htdocs/suitecrm/include/MVC/Controller/SugarController.php(468): SugarController->handle_action()
+#15 /opt/lampp/htdocs/suitecrm/modules/ModuleBuilder/controller.php(101): SugarController->process()
+#16 /opt/lampp/htdocs/suitecrm/include/MVC/Controller/SugarController.php(373): ModuleBuilderController->process()
+#17 /opt/lampp/htdocs/suitecrm/include/MVC/SugarApplication.php(113): SugarController->execute()
+#18 /opt/lampp/htdocs/suitecrm/index.php(52): SugarApplication->execute()
+#19 {main}
+Mon May 13 13:23:43 2019 [4609][1][FATAL] [ERROR] Failed to index bean to index
+Mon May 13 13:23:43 2019 [4609][1][FATAL] [ERROR] SuiteCRM\Search\Exceptions\SearchException: Elasticsearch trying to re-indexing a bean but indexer is disabled in configuration. in /opt/lampp/htdocs/suitecrm/lib/Search/ElasticSearch/ElasticSearchHooks.php:121
+Stack trace:
+#0 /opt/lampp/htdocs/suitecrm/lib/Search/ElasticSearch/ElasticSearchHooks.php(103): SuiteCRM\Search\ElasticSearch\ElasticSearchHooks->reIndex(Object(ACLAction))
+#1 /opt/lampp/htdocs/suitecrm/lib/Search/ElasticSearch/ElasticSearchHooks.php(76): SuiteCRM\Search\ElasticSearch\ElasticSearchHooks->reIndexSafe(Object(ACLAction))
+#2 /opt/lampp/htdocs/suitecrm/include/utils/LogicHook.php(272): SuiteCRM\Search\ElasticSearch\ElasticSearchHooks->beanSaved(Object(ACLAction), 'after_save', '')
+#3 /opt/lampp/htdocs/suitecrm/include/utils/LogicHook.php(213): LogicHook->process_hooks(Array, 'after_save', '')
+#4 /opt/lampp/htdocs/suitecrm/data/SugarBean.php(3129): LogicHook->call_custom_logic('ACLActions', 'after_save', '')
+#5 /opt/lampp/htdocs/suitecrm/data/SugarBean.php(2442): SugarBean->call_custom_logic('after_save', '')
+#6 /opt/lampp/htdocs/suitecrm/modules/ACLActions/ACLAction.php(103): SugarBean->save()
+#7 /opt/lampp/htdocs/suitecrm/data/SugarBean.php(2183): ACLAction::addActions('new_PushToDiall...', 'module')
+#8 /opt/lampp/htdocs/suitecrm/ModuleInstall/ModuleInstaller.php(1964): SugarBean->create_tables()
+#9 /opt/lampp/htdocs/suitecrm/ModuleInstall/ModuleInstaller.php(184): ModuleInstaller->install_beans(Array)
+#10 /opt/lampp/htdocs/suitecrm/ModuleInstall/PackageManager/PackageManager.php(600): ModuleInstaller->install('/opt/lampp/htdo...')
+#11 /opt/lampp/htdocs/suitecrm/modules/ModuleBuilder/controller.php(236): PackageManager->performInstall('upload/upgrades...', true)
+#12 /opt/lampp/htdocs/suitecrm/include/MVC/Controller/SugarController.php(525): ModuleBuilderController->action_DeployPackage()
+#13 /opt/lampp/htdocs/suitecrm/include/MVC/Controller/SugarController.php(494): SugarController->do_action()
+#14 /opt/lampp/htdocs/suitecrm/include/MVC/Controller/SugarController.php(468): SugarController->handle_action()
+#15 /opt/lampp/htdocs/suitecrm/modules/ModuleBuilder/controller.php(101): SugarController->process()
+#16 /opt/lampp/htdocs/suitecrm/include/MVC/Controller/SugarController.php(373): ModuleBuilderController->process()
+#17 /opt/lampp/htdocs/suitecrm/include/MVC/SugarApplication.php(113): SugarController->execute()
+#18 /opt/lampp/htdocs/suitecrm/index.php(52): SugarApplication->execute()
+#19 {main}
+Mon May 13 13:23:43 2019 [4609][1][FATAL] [ERROR] Failed to index bean to index
+Mon May 13 13:23:43 2019 [4609][1][FATAL] [ERROR] SuiteCRM\Search\Exceptions\SearchException: Elasticsearch trying to re-indexing a bean but indexer is disabled in configuration. in /opt/lampp/htdocs/suitecrm/lib/Search/ElasticSearch/ElasticSearchHooks.php:121
+Stack trace:
+#0 /opt/lampp/htdocs/suitecrm/lib/Search/ElasticSearch/ElasticSearchHooks.php(103): SuiteCRM\Search\ElasticSearch\ElasticSearchHooks->reIndex(Object(ACLAction))
+#1 /opt/lampp/htdocs/suitecrm/lib/Search/ElasticSearch/ElasticSearchHooks.php(76): SuiteCRM\Search\ElasticSearch\ElasticSearchHooks->reIndexSafe(Object(ACLAction))
+#2 /opt/lampp/htdocs/suitecrm/include/utils/LogicHook.php(272): SuiteCRM\Search\ElasticSearch\ElasticSearchHooks->beanSaved(Object(ACLAction), 'after_save', '')
+#3 /opt/lampp/htdocs/suitecrm/include/utils/LogicHook.php(213): LogicHook->process_hooks(Array, 'after_save', '')
+#4 /opt/lampp/htdocs/suitecrm/data/SugarBean.php(3129): LogicHook->call_custom_logic('ACLActions', 'after_save', '')
+#5 /opt/lampp/htdocs/suitecrm/data/SugarBean.php(2442): SugarBean->call_custom_logic('after_save', '')
+#6 /opt/lampp/htdocs/suitecrm/modules/ACLActions/ACLAction.php(103): SugarBean->save()
+#7 /opt/lampp/htdocs/suitecrm/data/SugarBean.php(2183): ACLAction::addActions('new_PushToDiall...', 'module')
+#8 /opt/lampp/htdocs/suitecrm/ModuleInstall/ModuleInstaller.php(1964): SugarBean->create_tables()
+#9 /opt/lampp/htdocs/suitecrm/ModuleInstall/ModuleInstaller.php(184): ModuleInstaller->install_beans(Array)
+#10 /opt/lampp/htdocs/suitecrm/ModuleInstall/PackageManager/PackageManager.php(600): ModuleInstaller->install('/opt/lampp/htdo...')
+#11 /opt/lampp/htdocs/suitecrm/modules/ModuleBuilder/controller.php(236): PackageManager->performInstall('upload/upgrades...', true)
+#12 /opt/lampp/htdocs/suitecrm/include/MVC/Controller/SugarController.php(525): ModuleBuilderController->action_DeployPackage()
+#13 /opt/lampp/htdocs/suitecrm/include/MVC/Controller/SugarController.php(494): SugarController->do_action()
+#14 /opt/lampp/htdocs/suitecrm/include/MVC/Controller/SugarController.php(468): SugarController->handle_action()
+#15 /opt/lampp/htdocs/suitecrm/modules/ModuleBuilder/controller.php(101): SugarController->process()
+#16 /opt/lampp/htdocs/suitecrm/include/MVC/Controller/SugarController.php(373): ModuleBuilderController->process()
+#17 /opt/lampp/htdocs/suitecrm/include/MVC/SugarApplication.php(113): SugarController->execute()
+#18 /opt/lampp/htdocs/suitecrm/index.php(52): SugarApplication->execute()
+#19 {main}
+Mon May 13 13:23:43 2019 [4609][1][FATAL] [ERROR] Failed to index bean to index
+Mon May 13 13:23:43 2019 [4609][1][FATAL] [ERROR] SuiteCRM\Search\Exceptions\SearchException: Elasticsearch trying to re-indexing a bean but indexer is disabled in configuration. in /opt/lampp/htdocs/suitecrm/lib/Search/ElasticSearch/ElasticSearchHooks.php:121
+Stack trace:
+#0 /opt/lampp/htdocs/suitecrm/lib/Search/ElasticSearch/ElasticSearchHooks.php(103): SuiteCRM\Search\ElasticSearch\ElasticSearchHooks->reIndex(Object(ACLAction))
+#1 /opt/lampp/htdocs/suitecrm/lib/Search/ElasticSearch/ElasticSearchHooks.php(76): SuiteCRM\Search\ElasticSearch\ElasticSearchHooks->reIndexSafe(Object(ACLAction))
+#2 /opt/lampp/htdocs/suitecrm/include/utils/LogicHook.php(272): SuiteCRM\Search\ElasticSearch\ElasticSearchHooks->beanSaved(Object(ACLAction), 'after_save', '')
+#3 /opt/lampp/htdocs/suitecrm/include/utils/LogicHook.php(213): LogicHook->process_hooks(Array, 'after_save', '')
+#4 /opt/lampp/htdocs/suitecrm/data/SugarBean.php(3129): LogicHook->call_custom_logic('ACLActions', 'after_save', '')
+#5 /opt/lampp/htdocs/suitecrm/data/SugarBean.php(2442): SugarBean->call_custom_logic('after_save', '')
+#6 /opt/lampp/htdocs/suitecrm/modules/ACLActions/ACLAction.php(103): SugarBean->save()
+#7 /opt/lampp/htdocs/suitecrm/data/SugarBean.php(2183): ACLAction::addActions('new_PushToDiall...', 'module')
+#8 /opt/lampp/htdocs/suitecrm/ModuleInstall/ModuleInstaller.php(1964): SugarBean->create_tables()
+#9 /opt/lampp/htdocs/suitecrm/ModuleInstall/ModuleInstaller.php(184): ModuleInstaller->install_beans(Array)
+#10 /opt/lampp/htdocs/suitecrm/ModuleInstall/PackageManager/PackageManager.php(600): ModuleInstaller->install('/opt/lampp/htdo...')
+#11 /opt/lampp/htdocs/suitecrm/modules/ModuleBuilder/controller.php(236): PackageManager->performInstall('upload/upgrades...', true)
+#12 /opt/lampp/htdocs/suitecrm/include/MVC/Controller/SugarController.php(525): ModuleBuilderController->action_DeployPackage()
+#13 /opt/lampp/htdocs/suitecrm/include/MVC/Controller/SugarController.php(494): SugarController->do_action()
+#14 /opt/lampp/htdocs/suitecrm/include/MVC/Controller/SugarController.php(468): SugarController->handle_action()
+#15 /opt/lampp/htdocs/suitecrm/modules/ModuleBuilder/controller.php(101): SugarController->process()
+#16 /opt/lampp/htdocs/suitecrm/include/MVC/Controller/SugarController.php(373): ModuleBuilderController->process()
+#17 /opt/lampp/htdocs/suitecrm/include/MVC/SugarApplication.php(113): SugarController->execute()
+#18 /opt/lampp/htdocs/suitecrm/index.php(52): SugarApplication->execute()
+#19 {main}
+Mon May 13 13:23:43 2019 [4609][1][FATAL] [ERROR] Failed to index bean to index
+Mon May 13 13:23:43 2019 [4609][1][FATAL] [ERROR] SuiteCRM\Search\Exceptions\SearchException: Elasticsearch trying to re-indexing a bean but indexer is disabled in configuration. in /opt/lampp/htdocs/suitecrm/lib/Search/ElasticSearch/ElasticSearchHooks.php:121
+Stack trace:
+#0 /opt/lampp/htdocs/suitecrm/lib/Search/ElasticSearch/ElasticSearchHooks.php(103): SuiteCRM\Search\ElasticSearch\ElasticSearchHooks->reIndex(Object(ACLAction))
+#1 /opt/lampp/htdocs/suitecrm/lib/Search/ElasticSearch/ElasticSearchHooks.php(76): SuiteCRM\Search\ElasticSearch\ElasticSearchHooks->reIndexSafe(Object(ACLAction))
+#2 /opt/lampp/htdocs/suitecrm/include/utils/LogicHook.php(272): SuiteCRM\Search\ElasticSearch\ElasticSearchHooks->beanSaved(Object(ACLAction), 'after_save', '')
+#3 /opt/lampp/htdocs/suitecrm/include/utils/LogicHook.php(213): LogicHook->process_hooks(Array, 'after_save', '')
+#4 /opt/lampp/htdocs/suitecrm/data/SugarBean.php(3129): LogicHook->call_custom_logic('ACLActions', 'after_save', '')
+#5 /opt/lampp/htdocs/suitecrm/data/SugarBean.php(2442): SugarBean->call_custom_logic('after_save', '')
+#6 /opt/lampp/htdocs/suitecrm/modules/ACLActions/ACLAction.php(103): SugarBean->save()
+#7 /opt/lampp/htdocs/suitecrm/data/SugarBean.php(2183): ACLAction::addActions('new_PushToDiall...', 'module')
+#8 /opt/lampp/htdocs/suitecrm/ModuleInstall/ModuleInstaller.php(1964): SugarBean->create_tables()
+#9 /opt/lampp/htdocs/suitecrm/ModuleInstall/ModuleInstaller.php(184): ModuleInstaller->install_beans(Array)
+#10 /opt/lampp/htdocs/suitecrm/ModuleInstall/PackageManager/PackageManager.php(600): ModuleInstaller->install('/opt/lampp/htdo...')
+#11 /opt/lampp/htdocs/suitecrm/modules/ModuleBuilder/controller.php(236): PackageManager->performInstall('upload/upgrades...', true)
+#12 /opt/lampp/htdocs/suitecrm/include/MVC/Controller/SugarController.php(525): ModuleBuilderController->action_DeployPackage()
+#13 /opt/lampp/htdocs/suitecrm/include/MVC/Controller/SugarController.php(494): SugarController->do_action()
+#14 /opt/lampp/htdocs/suitecrm/include/MVC/Controller/SugarController.php(468): SugarController->handle_action()
+#15 /opt/lampp/htdocs/suitecrm/modules/ModuleBuilder/controller.php(101): SugarController->process()
+#16 /opt/lampp/htdocs/suitecrm/include/MVC/Controller/SugarController.php(373): ModuleBuilderController->process()
+#17 /opt/lampp/htdocs/suitecrm/include/MVC/SugarApplication.php(113): SugarController->execute()
+#18 /opt/lampp/htdocs/suitecrm/index.php(52): SugarApplication->execute()
+#19 {main}
+Mon May 13 13:23:43 2019 [4609][1][FATAL] [ERROR] Failed to index bean to index
+Mon May 13 13:23:43 2019 [4609][1][FATAL] [ERROR] SuiteCRM\Search\Exceptions\SearchException: Elasticsearch trying to re-indexing a bean but indexer is disabled in configuration. in /opt/lampp/htdocs/suitecrm/lib/Search/ElasticSearch/ElasticSearchHooks.php:121
+Stack trace:
+#0 /opt/lampp/htdocs/suitecrm/lib/Search/ElasticSearch/ElasticSearchHooks.php(103): SuiteCRM\Search\ElasticSearch\ElasticSearchHooks->reIndex(Object(ACLAction))
+#1 /opt/lampp/htdocs/suitecrm/lib/Search/ElasticSearch/ElasticSearchHooks.php(76): SuiteCRM\Search\ElasticSearch\ElasticSearchHooks->reIndexSafe(Object(ACLAction))
+#2 /opt/lampp/htdocs/suitecrm/include/utils/LogicHook.php(272): SuiteCRM\Search\ElasticSearch\ElasticSearchHooks->beanSaved(Object(ACLAction), 'after_save', '')
+#3 /opt/lampp/htdocs/suitecrm/include/utils/LogicHook.php(213): LogicHook->process_hooks(Array, 'after_save', '')
+#4 /opt/lampp/htdocs/suitecrm/data/SugarBean.php(3129): LogicHook->call_custom_logic('ACLActions', 'after_save', '')
+#5 /opt/lampp/htdocs/suitecrm/data/SugarBean.php(2442): SugarBean->call_custom_logic('after_save', '')
+#6 /opt/lampp/htdocs/suitecrm/modules/ACLActions/ACLAction.php(103): SugarBean->save()
+#7 /opt/lampp/htdocs/suitecrm/data/SugarBean.php(2183): ACLAction::addActions('new_PushToDiall...', 'module')
+#8 /opt/lampp/htdocs/suitecrm/ModuleInstall/ModuleInstaller.php(1964): SugarBean->create_tables()
+#9 /opt/lampp/htdocs/suitecrm/ModuleInstall/ModuleInstaller.php(184): ModuleInstaller->install_beans(Array)
+#10 /opt/lampp/htdocs/suitecrm/ModuleInstall/PackageManager/PackageManager.php(600): ModuleInstaller->install('/opt/lampp/htdo...')
+#11 /opt/lampp/htdocs/suitecrm/modules/ModuleBuilder/controller.php(236): PackageManager->performInstall('upload/upgrades...', true)
+#12 /opt/lampp/htdocs/suitecrm/include/MVC/Controller/SugarController.php(525): ModuleBuilderController->action_DeployPackage()
+#13 /opt/lampp/htdocs/suitecrm/include/MVC/Controller/SugarController.php(494): SugarController->do_action()
+#14 /opt/lampp/htdocs/suitecrm/include/MVC/Controller/SugarController.php(468): SugarController->handle_action()
+#15 /opt/lampp/htdocs/suitecrm/modules/ModuleBuilder/controller.php(101): SugarController->process()
+#16 /opt/lampp/htdocs/suitecrm/include/MVC/Controller/SugarController.php(373): ModuleBuilderController->process()
+#17 /opt/lampp/htdocs/suitecrm/include/MVC/SugarApplication.php(113): SugarController->execute()
+#18 /opt/lampp/htdocs/suitecrm/index.php(52): SugarApplication->execute()
+#19 {main}
+Mon May 13 13:24:33 2019 [4609][1][FATAL] [ERROR] Failed to index bean to index
+Mon May 13 13:24:33 2019 [4609][1][FATAL] [ERROR] SuiteCRM\Search\Exceptions\SearchException: Elasticsearch trying to re-indexing a bean but indexer is disabled in configuration. in /opt/lampp/htdocs/suitecrm/lib/Search/ElasticSearch/ElasticSearchHooks.php:121
+Stack trace:
+#0 /opt/lampp/htdocs/suitecrm/lib/Search/ElasticSearch/ElasticSearchHooks.php(103): SuiteCRM\Search\ElasticSearch\ElasticSearchHooks->reIndex(Object(UpgradeHistory))
+#1 /opt/lampp/htdocs/suitecrm/lib/Search/ElasticSearch/ElasticSearchHooks.php(76): SuiteCRM\Search\ElasticSearch\ElasticSearchHooks->reIndexSafe(Object(UpgradeHistory))
+#2 /opt/lampp/htdocs/suitecrm/include/utils/LogicHook.php(272): SuiteCRM\Search\ElasticSearch\ElasticSearchHooks->beanSaved(Object(UpgradeHistory), 'after_save', '')
+#3 /opt/lampp/htdocs/suitecrm/include/utils/LogicHook.php(213): LogicHook->process_hooks(Array, 'after_save', '')
+#4 /opt/lampp/htdocs/suitecrm/data/SugarBean.php(3129): LogicHook->call_custom_logic('Administration', 'after_save', '')
+#5 /opt/lampp/htdocs/suitecrm/data/SugarBean.php(2442): SugarBean->call_custom_logic('after_save', '')
+#6 /opt/lampp/htdocs/suitecrm/ModuleInstall/PackageManager/PackageManager.php(619): SugarBean->save()
+#7 /opt/lampp/htdocs/suitecrm/modules/ModuleBuilder/controller.php(236): PackageManager->performInstall('upload/upgrades...', true)
+#8 /opt/lampp/htdocs/suitecrm/include/MVC/Controller/SugarController.php(525): ModuleBuilderController->action_DeployPackage()
+#9 /opt/lampp/htdocs/suitecrm/include/MVC/Controller/SugarController.php(494): SugarController->do_action()
+#10 /opt/lampp/htdocs/suitecrm/include/MVC/Controller/SugarController.php(468): SugarController->handle_action()
+#11 /opt/lampp/htdocs/suitecrm/modules/ModuleBuilder/controller.php(101): SugarController->process()
+#12 /opt/lampp/htdocs/suitecrm/include/MVC/Controller/SugarController.php(373): ModuleBuilderController->process()
+#13 /opt/lampp/htdocs/suitecrm/include/MVC/SugarApplication.php(113): SugarController->execute()
+#14 /opt/lampp/htdocs/suitecrm/index.php(52): SugarApplication->execute()
+#15 {main}
+Mon May 13 13:24:33 2019 [4609][1][FATAL] [ERROR] Failed to index bean to index
+Mon May 13 13:24:33 2019 [4609][1][FATAL] [ERROR] SuiteCRM\Search\Exceptions\SearchException: Elasticsearch trying to re-indexing a bean but indexer is disabled in configuration. in /opt/lampp/htdocs/suitecrm/lib/Search/ElasticSearch/ElasticSearchHooks.php:121
+Stack trace:
+#0 /opt/lampp/htdocs/suitecrm/lib/Search/ElasticSearch/ElasticSearchHooks.php(103): SuiteCRM\Search\ElasticSearch\ElasticSearchHooks->reIndex(Object(UserPreference))
+#1 /opt/lampp/htdocs/suitecrm/lib/Search/ElasticSearch/ElasticSearchHooks.php(76): SuiteCRM\Search\ElasticSearch\ElasticSearchHooks->reIndexSafe(Object(UserPreference))
+#2 /opt/lampp/htdocs/suitecrm/include/utils/LogicHook.php(272): SuiteCRM\Search\ElasticSearch\ElasticSearchHooks->beanSaved(Object(UserPreference), 'after_save', '')
+#3 /opt/lampp/htdocs/suitecrm/include/utils/LogicHook.php(213): LogicHook->process_hooks(Array, 'after_save', '')
+#4 /opt/lampp/htdocs/suitecrm/data/SugarBean.php(3129): LogicHook->call_custom_logic('UserPreferences', 'after_save', '')
+#5 /opt/lampp/htdocs/suitecrm/data/SugarBean.php(2442): SugarBean->call_custom_logic('after_save', '')
+#6 /opt/lampp/htdocs/suitecrm/modules/UserPreferences/UserPreference.php(357): SugarBean->save()
+#7 /opt/lampp/htdocs/suitecrm/modules/Users/User.php(446): UserPreference->savePreferencesToDB()
+#8 /opt/lampp/htdocs/suitecrm/include/utils.php(3331): User->savePreferencesToDB()
+#9 /opt/lampp/htdocs/suitecrm/include/MVC/SugarApplication.php(114): sugar_cleanup()
+#10 /opt/lampp/htdocs/suitecrm/index.php(52): SugarApplication->execute()
+#11 {main}
+Monday 13 May 2019 01:25:27 PM CEST [3786][1][FATAL] [ERROR] Failed to index bean to index
+Monday 13 May 2019 01:25:27 PM CEST [3786][1][FATAL] [ERROR] SuiteCRM\Search\Exceptions\SearchException: Elasticsearch trying to re-indexing a bean but indexer is disabled in configuration. in /opt/lampp/htdocs/suitecrm/lib/Search/ElasticSearch/ElasticSearchHooks.php:121
+Stack trace:
+#0 /opt/lampp/htdocs/suitecrm/lib/Search/ElasticSearch/ElasticSearchHooks.php(103): SuiteCRM\Search\ElasticSearch\ElasticSearchHooks->reIndex(Object(UserPreference))
+#1 /opt/lampp/htdocs/suitecrm/lib/Search/ElasticSearch/ElasticSearchHooks.php(76): SuiteCRM\Search\ElasticSearch\ElasticSearchHooks->reIndexSafe(Object(UserPreference))
+#2 /opt/lampp/htdocs/suitecrm/include/utils/LogicHook.php(272): SuiteCRM\Search\ElasticSearch\ElasticSearchHooks->beanSaved(Object(UserPreference), 'after_save', '')
+#3 /opt/lampp/htdocs/suitecrm/include/utils/LogicHook.php(213): LogicHook->process_hooks(Array, 'after_save', '')
+#4 /opt/lampp/htdocs/suitecrm/data/SugarBean.php(3129): LogicHook->call_custom_logic('UserPreferences', 'after_save', '')
+#5 /opt/lampp/htdocs/suitecrm/data/SugarBean.php(2442): SugarBean->call_custom_logic('after_save', '')
+#6 /opt/lampp/htdocs/suitecrm/modules/UserPreferences/UserPreference.php(357): SugarBean->save()
+#7 /opt/lampp/htdocs/suitecrm/modules/Users/User.php(446): UserPreference->savePreferencesToDB()
+#8 /opt/lampp/htdocs/suitecrm/include/utils.php(3331): User->savePreferencesToDB()
+#9 /opt/lampp/htdocs/suitecrm/include/MVC/SugarApplication.php(114): sugar_cleanup()
+#10 /opt/lampp/htdocs/suitecrm/index.php(52): SugarApplication->execute()
+#11 {main}
+Monday 13 May 2019 01:25:27 PM CEST [3786][1][FATAL] [ERROR] Failed to index bean to index
+Monday 13 May 2019 01:25:27 PM CEST [3786][1][FATAL] [ERROR] SuiteCRM\Search\Exceptions\SearchException: Elasticsearch trying to re-indexing a bean but indexer is disabled in configuration. in /opt/lampp/htdocs/suitecrm/lib/Search/ElasticSearch/ElasticSearchHooks.php:121
+Stack trace:
+#0 /opt/lampp/htdocs/suitecrm/lib/Search/ElasticSearch/ElasticSearchHooks.php(103): SuiteCRM\Search\ElasticSearch\ElasticSearchHooks->reIndex(Object(UserPreference))
+#1 /opt/lampp/htdocs/suitecrm/lib/Search/ElasticSearch/ElasticSearchHooks.php(76): SuiteCRM\Search\ElasticSearch\ElasticSearchHooks->reIndexSafe(Object(UserPreference))
+#2 /opt/lampp/htdocs/suitecrm/include/utils/LogicHook.php(272): SuiteCRM\Search\ElasticSearch\ElasticSearchHooks->beanSaved(Object(UserPreference), 'after_save', '')
+#3 /opt/lampp/htdocs/suitecrm/include/utils/LogicHook.php(213): LogicHook->process_hooks(Array, 'after_save', '')
+#4 /opt/lampp/htdocs/suitecrm/data/SugarBean.php(3129): LogicHook->call_custom_logic('UserPreferences', 'after_save', '')
+#5 /opt/lampp/htdocs/suitecrm/data/SugarBean.php(2442): SugarBean->call_custom_logic('after_save', '')
+#6 /opt/lampp/htdocs/suitecrm/modules/UserPreferences/UserPreference.php(357): SugarBean->save()
+#7 /opt/lampp/htdocs/suitecrm/modules/Users/User.php(446): UserPreference->savePreferencesToDB()
+#8 /opt/lampp/htdocs/suitecrm/include/utils.php(3331): User->savePreferencesToDB()
+#9 /opt/lampp/htdocs/suitecrm/include/MVC/SugarApplication.php(114): sugar_cleanup()
+#10 /opt/lampp/htdocs/suitecrm/index.php(52): SugarApplication->execute()
+#11 {main}
+Mon May 13 13:27:17 2019 [3570][1][FATAL] [ERROR] Failed to index bean to index
+Mon May 13 13:27:17 2019 [3570][1][FATAL] [ERROR] SuiteCRM\Search\Exceptions\SearchException: Elasticsearch trying to re-indexing a bean but indexer is disabled in configuration. in /opt/lampp/htdocs/suitecrm/lib/Search/ElasticSearch/ElasticSearchHooks.php:121
+Stack trace:
+#0 /opt/lampp/htdocs/suitecrm/lib/Search/ElasticSearch/ElasticSearchHooks.php(103): SuiteCRM\Search\ElasticSearch\ElasticSearchHooks->reIndex(Object(UserPreference))
+#1 /opt/lampp/htdocs/suitecrm/lib/Search/ElasticSearch/ElasticSearchHooks.php(76): SuiteCRM\Search\ElasticSearch\ElasticSearchHooks->reIndexSafe(Object(UserPreference))
+#2 /opt/lampp/htdocs/suitecrm/include/utils/LogicHook.php(272): SuiteCRM\Search\ElasticSearch\ElasticSearchHooks->beanSaved(Object(UserPreference), 'after_save', '')
+#3 /opt/lampp/htdocs/suitecrm/include/utils/LogicHook.php(213): LogicHook->process_hooks(Array, 'after_save', '')
+#4 /opt/lampp/htdocs/suitecrm/data/SugarBean.php(3129): LogicHook->call_custom_logic('UserPreferences', 'after_save', '')
+#5 /opt/lampp/htdocs/suitecrm/data/SugarBean.php(2442): SugarBean->call_custom_logic('after_save', '')
+#6 /opt/lampp/htdocs/suitecrm/modules/UserPreferences/UserPreference.php(357): SugarBean->save()
+#7 /opt/lampp/htdocs/suitecrm/modules/Users/User.php(446): UserPreference->savePreferencesToDB()
+#8 /opt/lampp/htdocs/suitecrm/include/utils.php(3331): User->savePreferencesToDB()
+#9 /opt/lampp/htdocs/suitecrm/include/MVC/SugarApplication.php(114): sugar_cleanup()
+#10 /opt/lampp/htdocs/suitecrm/index.php(52): SugarApplication->execute()
+#11 {main}
+Mon May 13 13:27:17 2019 [3570][1][FATAL] [ERROR] Failed to index bean to index
+Mon May 13 13:27:17 2019 [3570][1][FATAL] [ERROR] SuiteCRM\Search\Exceptions\SearchException: Elasticsearch trying to re-indexing a bean but indexer is disabled in configuration. in /opt/lampp/htdocs/suitecrm/lib/Search/ElasticSearch/ElasticSearchHooks.php:121
+Stack trace:
+#0 /opt/lampp/htdocs/suitecrm/lib/Search/ElasticSearch/ElasticSearchHooks.php(103): SuiteCRM\Search\ElasticSearch\ElasticSearchHooks->reIndex(Object(UserPreference))
+#1 /opt/lampp/htdocs/suitecrm/lib/Search/ElasticSearch/ElasticSearchHooks.php(76): SuiteCRM\Search\ElasticSearch\ElasticSearchHooks->reIndexSafe(Object(UserPreference))
+#2 /opt/lampp/htdocs/suitecrm/include/utils/LogicHook.php(272): SuiteCRM\Search\ElasticSearch\ElasticSearchHooks->beanSaved(Object(UserPreference), 'after_save', '')
+#3 /opt/lampp/htdocs/suitecrm/include/utils/LogicHook.php(213): LogicHook->process_hooks(Array, 'after_save', '')
+#4 /opt/lampp/htdocs/suitecrm/data/SugarBean.php(3129): LogicHook->call_custom_logic('UserPreferences', 'after_save', '')
+#5 /opt/lampp/htdocs/suitecrm/data/SugarBean.php(2442): SugarBean->call_custom_logic('after_save', '')
+#6 /opt/lampp/htdocs/suitecrm/modules/UserPreferences/UserPreference.php(357): SugarBean->save()
+#7 /opt/lampp/htdocs/suitecrm/modules/Users/User.php(446): UserPreference->savePreferencesToDB()
+#8 /opt/lampp/htdocs/suitecrm/include/utils.php(3331): User->savePreferencesToDB()
+#9 /opt/lampp/htdocs/suitecrm/include/MVC/SugarApplication.php(114): sugar_cleanup()
+#10 /opt/lampp/htdocs/suitecrm/index.php(52): SugarApplication->execute()
+#11 {main}
